@@ -1,0 +1,18 @@
+Clock 	- generiert ein Signal
+Timer 	- Ist quasi ein Counter der bei jedem Clocktick in/dekrementiert
+		- Generiert Interrupt (TAIFG) wenn ein spezifiziertes Limit erreicht wird
+		- 3 Teile:
+			- Clock input welcher mit einer spezifizierten Rate tickt
+			- Counter welcher die ticks zählt
+			- Interrupt Prozedur welche aufgerufen wird wenn das Zähllimit erreicht ist
+		-Timer (TA0CTL)	
+			-TASSELx - Bits 8 und 9, wählt source clock
+			-MC - Bits 4 und 5, wählen Zählmodus
+		-Counter 
+			-TA0CCTL0
+				-Bit 4 - schaltet Interrupts ein und aus
+			-TA0CCR0
+				-16 Bit Zählwert, es wird bis zu diesem Wert gezählt, dann wird ein Interrupt ausgelöst und der Wert auf 0 zurückgesetzt (bei UP)
+???		- _BIS_SR(LPM0_bits + GIE)
+			- aktiviert low power mode mit aktivierten Interrupts
+				
